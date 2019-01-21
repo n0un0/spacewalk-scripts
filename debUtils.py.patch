@@ -1,0 +1,11 @@
+-- a/usr/share/rhn/up2date_client/debUtils.py
++++ b/usr/share/rhn/up2date_client/debUtils.py
+@@ -28,7 +28,7 @@ def verifyPackages(packages):
+ 
+ def parseVRE(version):
+     epoch = ''
+-    release = '0'
++    release = 'X'
+     if version.find(':') != -1:
+         epoch, version = version.split(':')
+     if version.find('-') != -1:
