@@ -13,7 +13,7 @@ If no datetime is given, packages installed in past 24h are listed.
 - **import-old.sh** imports all errata from Jan 2012 to the month just before today when run; in effect provides constantly up-to-date ubuntu-errata.xml file
 - **debianSync.py** Ported version of https://github.com/stevemeier/spacewalk-debian-sync . Its a drop-in replacement, meaning all arguments are the same
 
-- **pre_invoke.py.patch and spacewalk.patch** use it for Debian clients. You need to generate keys before :  
+- **pre_invoke.py.patch - spacewalk.patch and debUtils.py.patch** use it for Debian clients. You need to generate keys before :  
 \# gpg --gen-key  
 Generate a key, answer :  
     4) RSA sign only  
