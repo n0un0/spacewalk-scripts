@@ -6,18 +6,18 @@
 
 if [ "$1" = "" -o "$2" = "" ]; then echo "Usage: secureApt.sh DIST SUITE";exit 1;fi
 
-DATE=`date "+%a, %d %b %Y %H:%M:%S %z"`
+DATE=`date -Ru`
 GPG_PASS='foobar'
 
-HEADER="Origin: Ubuntu
-Label: Ubuntu
+HEADER="Origin: Debian
+Label: Debian
 Suite: $2
-Version: 12.04
+Version: 9.6
 Codename: $1
 Date: ${DATE}
 Architectures: amd64
 Components: repodata
-Description: Ubuntu Precise 12.04
+Description: Debian Stretch 9.6
 MD5Sum:"
 
 PACKAGES_MD5=($(md5sum Packages))
@@ -42,4 +42,4 @@ echo -e " ${PACKAGESGZ_SHA256}\t${PACKAGESGZ_SIZE}\trepodata/binary-i386/Package
 
 # write the signature for Release file
 rm -rf Release.gpg
-echo $GPG_PASS | gpg --armor --detach-sign -o Release.gpg --batch --no-tty --passphrase-fd 0 --sign Release
+echo $GPG_PASS | gpg --armor --detach-sign -o Release.gpg --batch --no-tty --digest-algo SHA256 --passphrase-fd 0 --sign Release
