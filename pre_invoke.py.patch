@@ -28,11 +28,11 @@
 -                sources.remove(source)
 +            for chan in channels:
              sources.add(type='deb',
-                     uri='spacewalk://' + get_server(),
+                         uri='spacewalk://' + get_server(),
 -                        dist='channels:',
 -                        orig_comps=channels,
-+                    dist=chan,
-+                    orig_comps=['repodata'],
-                     file=get_conf_file()
++                        dist=chan,
++                        orig_comps=['repodata'],
+                         file=get_conf_file()
                      )
      sources.save()
