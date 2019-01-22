@@ -34,5 +34,5 @@
 +                        dist=chan,
 +                        orig_comps=['repodata'],
                          file=get_conf_file()
-                     )
+                         )
      sources.save()
