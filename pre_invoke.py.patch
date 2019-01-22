@@ -13,26 +13,26 @@
          return channels
      except up2dateErrors.Error:
          return []
-@@ -65,17 +64,16 @@
+@@ -65,16 +64,18 @@
          if source.uri.startswith('spacewalk://'):
              source.set_enabled(False)
              sw_source.append(source)
--
++
 +    for source in sw_source:
-+            sources.remove(source) 
++            sources.remove(source)
+
      if up2dateAuth.getSystemId():
-        channels = get_channels()
-        if len(channels):
+         channels = get_channels()
+         if len(channels):
 -            for source in sw_source:
--                        sources.remove(source)
--            for channel in channels:
-+            for chan in channels:
-                 sources.add(type='deb',
+-                sources.remove(source)
++            for chan in channel:
+             sources.add(type='deb',
                          uri='spacewalk://' + get_server(),
 -                        dist='channels:',
--                        orig_comps=[channel],
+-                        orig_comps=channels,
 +                        dist=chan,
 +                        orig_comps=['repodata'],
                          file=get_conf_file()
                          )
-                 sources.save()
+     sources.save()
