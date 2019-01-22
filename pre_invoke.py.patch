@@ -1,5 +1,5 @@
---- /usr/lib/apt-spacewalk/pre_invoke.py.old	2019-01-20 13:35:51.389611082 +0100
-+++ /usr/lib/apt-spacewalk/pre_invoke.py	2019-01-20 17:37:34.121079934 +0100
+--- pre_invoke.py.old   2019-01-22 09:41:37.012622627 +0100
++++ pre_invoke.py       2019-01-22 09:40:42.603124171 +0100
 @@ -37,10 +37,9 @@
  def get_channels():
      """Return channels associated with a machine"""
@@ -13,21 +13,21 @@
          return channels
      except up2dateErrors.Error:
          return []
-@@ -65,16 +64,18 @@
-         if source.uri.startswith('spacewalk://'):
+@@ -66,15 +65,17 @@
              source.set_enabled(False)
              sw_source.append(source)
-+
+
 +    for source in sw_source:
 +        sources.remove(source)
-
++
      if up2dateAuth.getSystemId():
          channels = get_channels()
          if len(channels):
 -            for source in sw_source:
 -                sources.remove(source)
+-            sources.add(type='deb',
 +            for chan in channels:
-             sources.add(type='deb',
++                sources.add(type='deb',
                          uri='spacewalk://' + get_server(),
 -                        dist='channels:',
 -                        orig_comps=channels,
